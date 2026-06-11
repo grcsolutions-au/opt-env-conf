@@ -12,6 +12,10 @@ module OptEnvConf.Parser
     setting,
     filePathSetting,
     directoryPathSetting,
+    fileOsPathSetting,
+    directoryOsPathSetting,
+    fileOsPathSomeBaseSetting,
+    directoryOsPathSomeBaseSetting,
     strOption,
     strArgument,
     choice,
@@ -110,8 +114,11 @@ import OptEnvConf.Casing
 import OptEnvConf.Completer
 import OptEnvConf.Reader
 import OptEnvConf.Setting
+import qualified OsPath.IO as OsPathIO
+import qualified OsPath.OsString as OsPath
 import Path
 import Path.IO
+import System.OsPath (encodeFS)
 import Text.Show
 
 data CommandsBuilder a
@@ -468,6 +475,15 @@ setting = ParserSetting mLoc . buildSetting
 buildSetting :: [Builder a] -> Setting a
 buildSetting = completeBuilder . mconcat
 
+pathSetting :: (IsString a) => String -> [Builder a] -> Parser a
+pathSetting metavarStr builders =
+  setting $
+    builders
+      ++ [ reader str,
+           metavar metavarStr,
+           completer filePath
+         ]
+
 -- | A setting for @Path Abs File@.
 --
 -- This takes care of setting the 'reader' to 'str', setting the 'metavar' to @FILE_PATH@, autocompletion, and parsing the 'FilePath' into a @Path Abs File@.
@@ -475,15 +491,10 @@ filePathSetting ::
   (HasCallStack) =>
   [Builder FilePath] ->
   Parser (Path Abs File)
-filePathSetting builders =
-  mapIO resolveFile' $
-    withFrozenCallStack $
-      setting $
-        builders
-          ++ [ reader str,
-               metavar "FILE_PATH",
-               completer filePath
-             ]
+filePathSetting =
+  mapIO resolveFile'
+    . withFrozenCallStack
+    . pathSetting "FILE_PATH"
 
 -- | A setting for @Path Abs dir@.
 --
@@ -492,15 +503,58 @@ directoryPathSetting ::
   (HasCallStack) =>
   [Builder FilePath] ->
   Parser (Path Abs Dir)
-directoryPathSetting builders =
-  mapIO resolveDir' $
-    withFrozenCallStack $
-      setting $
-        builders
-          ++ [ reader str,
-               metavar "DIRECTORY_PATH",
-               completer directoryPath
-             ]
+directoryPathSetting =
+  mapIO resolveDir'
+    . withFrozenCallStack
+    . pathSetting "DIRECTORY_PATH"
+
+-- | A setting for @Path Abs File@.
+--
+-- This takes care of setting the 'reader' to 'str', setting the 'metavar' to @FILE_PATH@, autocompletion, and parsing the 'FilePath' into a @Path Abs File@.
+fileOsPathSetting ::
+  (HasCallStack) =>
+  [Builder FilePath] ->
+  Parser (OsPath.Path OsPath.Abs OsPath.File)
+fileOsPathSetting =
+  mapIO (encodeFS >=> OsPathIO.resolveFile')
+    . withFrozenCallStack
+    . pathSetting "FILE_PATH"
+
+-- | A setting for @Path Abs dir@.
+--
+-- This takes care of setting the 'reader' to 'str', setting the 'metavar' to @DIRECTORY_PATH@, autocompletion, and parsing the 'FilePath' into a @Path Abs Dir@.
+directoryOsPathSetting ::
+  (HasCallStack) =>
+  [Builder FilePath] ->
+  Parser (OsPath.Path OsPath.Abs OsPath.Dir)
+directoryOsPathSetting =
+  mapIO (encodeFS >=> OsPathIO.resolveDir')
+    . withFrozenCallStack
+    . pathSetting "DIRECTORY_PATH"
+
+-- | A setting for @Path Abs File@.
+--
+-- This takes care of setting the 'reader' to 'str', setting the 'metavar' to @FILE_PATH@, autocompletion, and parsing the 'FilePath' into a @Path Abs File@.
+fileOsPathSomeBaseSetting ::
+  (HasCallStack) =>
+  [Builder FilePath] ->
+  Parser (OsPath.SomeBase OsPath.File)
+fileOsPathSomeBaseSetting =
+  mapIO (encodeFS >=> OsPath.parseSomeFile)
+    . withFrozenCallStack
+    . pathSetting "FILE_PATH"
+
+-- | A setting for @Path Abs dir@.
+--
+-- This takes care of setting the 'reader' to 'str', setting the 'metavar' to @DIRECTORY_PATH@, autocompletion, and parsing the 'FilePath' into a @Path Abs Dir@.
+directoryOsPathSomeBaseSetting ::
+  (HasCallStack) =>
+  [Builder FilePath] ->
+  Parser (OsPath.SomeBase OsPath.Dir)
+directoryOsPathSomeBaseSetting =
+  mapIO (encodeFS >=> OsPath.parseSomeDir)
+    . withFrozenCallStack
+    . pathSetting "DIRECTORY_PATH"
 
 -- | A 'setting' with 'option', a 'reader' set to 'str', and the 'metavar' set to @STR@.
 --

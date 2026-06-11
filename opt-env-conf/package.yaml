@@ -24,6 +24,7 @@ library:
   - autodocodec-schema
   - autodocodec-yaml
   - containers
+  - filepath
   - hashable
   - mtl
   - path
@@ -40,3 +41,4 @@ library:
     - condition: "!os(windows)"
       dependencies:
         - safe-coloured-text-terminfo
+

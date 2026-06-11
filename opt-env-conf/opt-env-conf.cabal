@@ -58,6 +58,7 @@ library
     , autodocodec-yaml
     , base <5
     , containers
+    , filepath
     , hashable
     , mtl
     , path
