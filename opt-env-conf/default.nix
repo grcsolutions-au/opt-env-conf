@@ -1,16 +1,16 @@
 { mkDerivation, aeson, autodocodec, autodocodec-nix
-, autodocodec-schema, autodocodec-yaml, base, containers, hashable
-, lib, mtl, path, path-io, safe-coloured-text
+, autodocodec-schema, autodocodec-yaml, base, containers, filepath
+, hashable, lib, mtl, path, path-io, safe-coloured-text
 , safe-coloured-text-layout, safe-coloured-text-terminfo, selective
 , text, validity, validity-containers, validity-text
 }:
 mkDerivation {
   pname = "opt-env-conf";
-  version = "0.15.0.2";
+  version = "0.15.1.2";
   src = ./.;
   libraryHaskellDepends = [
     aeson autodocodec autodocodec-nix autodocodec-schema
-    autodocodec-yaml base containers hashable mtl path path-io
+    autodocodec-yaml base containers filepath hashable mtl path path-io
     safe-coloured-text safe-coloured-text-layout
     safe-coloured-text-terminfo selective text validity
     validity-containers validity-text
