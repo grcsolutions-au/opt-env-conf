@@ -378,6 +378,40 @@
         "type": "github"
       }
     },
+    "path": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781148234,
+        "narHash": "sha256-iATEkIvc0buSNTV3ghnkQB27U5FDSvozwzpUrqQPe+o=",
+        "owner": "grcsolutions-au",
+        "repo": "path",
+        "rev": "9968d31fb5fe819b374943a576d35de908d5eb79",
+        "type": "github"
+      },
+      "original": {
+        "owner": "grcsolutions-au",
+        "repo": "path",
+        "rev": "9968d31fb5fe819b374943a576d35de908d5eb79",
+        "type": "github"
+      }
+    },
+    "pathIo": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781155844,
+        "narHash": "sha256-Bm/kj6HuHy42RWsRADESgybxxh/y3pb5AUXftmoaQds=",
+        "owner": "grcsolutions-au",
+        "repo": "path-io",
+        "rev": "6eb65912ffebd638f3d519cce550a79fcd189d50",
+        "type": "github"
+      },
+      "original": {
+        "owner": "grcsolutions-au",
+        "repo": "path-io",
+        "rev": "6eb65912ffebd638f3d519cce550a79fcd189d50",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -406,6 +440,8 @@
         "horizon-advance": "horizon-advance",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-25_11": "nixpkgs-25_11",
+        "path": "path",
+        "pathIo": "pathIo",
         "pre-commit-hooks": "pre-commit-hooks",
         "safe-coloured-text": "safe-coloured-text",
         "sydtest": "sydtest",

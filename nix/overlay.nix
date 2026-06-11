@@ -1,6 +1,9 @@
+{ path, pathIo }:
 final: prev:
 let
-  overrides = final.callPackage ./overrides.nix { };
+  overrides = final.callPackage ./overrides.nix {
+    inherit path pathIo;
+  };
   addOverrides = old: { overrides = final.lib.composeExtensions (old.overrides or (_: _: { })) overrides; };
 in
 {

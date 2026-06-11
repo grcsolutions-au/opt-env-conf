@@ -15,6 +15,10 @@
     autodocodec.flake = false;
     safe-coloured-text.url = "github:NorfairKing/safe-coloured-text";
     safe-coloured-text.flake = false;
+    path.url = "github:grcsolutions-au/path?rev=9968d31fb5fe819b374943a576d35de908d5eb79";
+    path.flake = false;
+    pathIo.url = "github:grcsolutions-au/path-io?rev=6eb65912ffebd638f3d519cce550a79fcd189d50";
+    pathIo.flake = false;
     fast-myers-diff.url = "github:NorfairKing/fast-myers-diff";
     fast-myers-diff.flake = false;
     sydtest.url = "github:NorfairKing/sydtest";
@@ -34,6 +38,8 @@
     , validity
     , autodocodec
     , safe-coloured-text
+    , path
+    , pathIo
     , fast-myers-diff
     , sydtest
     , weeder-nix
@@ -64,8 +70,12 @@
       haskellPackages = haskellPackagesFor nixpkgs;
     in
     {
-      overrides.${system} = pkgs.callPackage ./nix/overrides.nix { };
-      overlays.${system} = import ./nix/overlay.nix;
+      overrides.${system} = pkgs.callPackage ./nix/overrides.nix {
+        inherit path pathIo;
+      };
+      overlays.${system} = import ./nix/overlay.nix {
+        inherit path pathIo;
+      };
       packages.${system}.default = haskellPackages.optEnvConfRelease;
       checks.${system} =
         let
