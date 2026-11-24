@@ -160,6 +160,38 @@
         "type": "github"
       }
     },
+    "path": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782723490,
+        "narHash": "sha256-G6nW7ts1YNYDbT5IiKvmR9JbBkHAtIwx50WI9QxYDCI=",
+        "owner": "grcsolutions-au",
+        "repo": "path",
+        "rev": "a4f11a0fb1ea1f28779e311b46ad9f7173de9537",
+        "type": "github"
+      },
+      "original": {
+        "owner": "grcsolutions-au",
+        "repo": "path",
+        "type": "github"
+      }
+    },
+    "path-io": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782355985,
+        "narHash": "sha256-twO6sHAwU6ErACmZO7ZQGHSa+IWKJr6wi2bOa/hJWuE=",
+        "owner": "grcsolutions-au",
+        "repo": "path-io",
+        "rev": "39fc0b978727a1a4eb88fe38684c32959166a602",
+        "type": "github"
+      },
+      "original": {
+        "owner": "grcsolutions-au",
+        "repo": "path-io",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -224,6 +256,8 @@
         "fast-myers-diff": "fast-myers-diff",
         "nixpkgs": "nixpkgs",
         "nixpkgs-25_11": "nixpkgs-25_11",
+        "path": "path",
+        "path-io": "path-io",
         "pre-commit-hooks": "pre-commit-hooks",
         "release-to-hackage": "release-to-hackage",
         "safe-coloured-text": "safe-coloured-text",

@@ -4,6 +4,8 @@
 , gzip
 , runCommand
 , writeShellApplication
+, path
+, pathIo
 , ...
 }:
 with lib;
@@ -29,6 +31,13 @@ let
       doCoverage = false;
       doCheck = false; # Only for coverage
     }));
+
+  pathPkg = name: src:
+    overrideCabal (self.callCabal2nix name src { }) (_old: {
+      doBenchmark = true;
+      doCoverage = false;
+      doCheck = false;
+    });
 
   installManpage = exeName: drv: overrideCabal drv (old: {
     postInstall = (old.postInstall or "") + ''
@@ -181,6 +190,8 @@ let
 in
 {
   inherit optEnvConfPackages;
+  path = pathPkg "path" (path + "/path");
+  "path-io" = pathPkg "path-io" pathIo;
 
   optEnvConfRelease =
     symlinkJoin {

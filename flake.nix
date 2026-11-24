@@ -23,6 +23,10 @@
     dekking.url = "github:NorfairKing/dekking";
     dekking.flake = false;
     release-to-hackage.url = "github:NorfairKing/release-to-hackage";
+    path.url = "github:grcsolutions-au/path";
+    path.flake = false;
+    path-io.url = "github:grcsolutions-au/path-io";
+    path-io.flake = false;
   };
 
   outputs =
@@ -38,6 +42,8 @@
     , weeder-nix
     , dekking
     , release-to-hackage
+    , path
+    , path-io
     }:
     let
       system = "x86_64-linux";
@@ -64,8 +70,8 @@
       haskellPackages = haskellPackagesFor nixpkgs;
     in
     {
-      overrides.${system} = pkgs.callPackage ./nix/overrides.nix { };
-      overlays.${system} = import ./nix/overlay.nix;
+      overrides.${system} = pkgs.callPackage ./nix/overrides.nix { inherit path; pathIo = path-io; };
+      overlays.${system} = import ./nix/overlay.nix { inherit path; pathIo = path-io; };
       packages.${system} = {
         default = haskellPackages.optEnvConfRelease;
         release-to-hackage = release-to-hackage.lib.${system}.makeHackageRelease {
