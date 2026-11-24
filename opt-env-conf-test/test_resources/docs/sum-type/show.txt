@@ -82,16 +82,15 @@ WithConfig
                           _
                           (EitherCodec
                              PossiblyJointUnion
-                             NullCodec
+                             (NullCodec Nothing)
                              (BimapCodec
                                 _
                                 _
                                 (StringCodec
                                    Nothing
-                                   StringBounds
-                                     { stringBoundsMinLength = Nothing
-                                     , stringBoundsMaxLength = Nothing
-                                     })))
+                                   (StringTypePlain
+                                      PlainStringTypeString
+                                      Bounds { boundsLower = Nothing , boundsUpper = Nothing }))))
                           (Just _) :|
                           []))
                     Nothing

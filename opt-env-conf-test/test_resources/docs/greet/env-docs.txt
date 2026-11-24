@@ -4,14 +4,60 @@ AnyDocsAnd
       ConfDoc
         { confDocKeys =
             ( "greeting" :| []
-            , AnyOfSchema
-                (NullSchema :|
-                   [ StringSchema
-                       StringBounds
-                         { stringBoundsMinLength = Nothing
-                         , stringBoundsMaxLength = Nothing
-                         }
-                   ])
+            , [ [ Chunk
+                    { chunkText = "# "
+                    , chunkStyle =
+                        ChunkStyle
+                          { chunkStyleItalic = Nothing
+                          , chunkStyleStrikethrough = Nothing
+                          , chunkStyleSwapForegroundBackground = Nothing
+                          , chunkStyleConcealed = Nothing
+                          , chunkStyleOverlined = Nothing
+                          , chunkStyleConsoleIntensity = Nothing
+                          , chunkStyleUnderlining = Nothing
+                          , chunkStyleBlinking = Nothing
+                          , chunkStyleForeground = Nothing
+                          , chunkStyleBackground = Nothing
+                          , chunkStyleHyperlink = Nothing
+                          }
+                    }
+                , Chunk
+                    { chunkText = "or null"
+                    , chunkStyle =
+                        ChunkStyle
+                          { chunkStyleItalic = Nothing
+                          , chunkStyleStrikethrough = Nothing
+                          , chunkStyleSwapForegroundBackground = Nothing
+                          , chunkStyleConcealed = Nothing
+                          , chunkStyleOverlined = Nothing
+                          , chunkStyleConsoleIntensity = Nothing
+                          , chunkStyleUnderlining = Nothing
+                          , chunkStyleBlinking = Nothing
+                          , chunkStyleForeground = Just (Colour8 Dull Green)
+                          , chunkStyleBackground = Nothing
+                          , chunkStyleHyperlink = Nothing
+                          }
+                    }
+                ]
+              , [ Chunk
+                    { chunkText = "<string>"
+                    , chunkStyle =
+                        ChunkStyle
+                          { chunkStyleItalic = Nothing
+                          , chunkStyleStrikethrough = Nothing
+                          , chunkStyleSwapForegroundBackground = Nothing
+                          , chunkStyleConcealed = Nothing
+                          , chunkStyleOverlined = Nothing
+                          , chunkStyleConsoleIntensity = Nothing
+                          , chunkStyleUnderlining = Nothing
+                          , chunkStyleBlinking = Nothing
+                          , chunkStyleForeground = Just (Colour8 Dull Yellow)
+                          , chunkStyleBackground = Nothing
+                          , chunkStyleHyperlink = Nothing
+                          }
+                    }
+                ]
+              ]
             ) :|
               []
         , confDocDefault = Just "\"Hello\""
@@ -21,7 +67,62 @@ AnyDocsAnd
   , AnyDocsSingle
       ConfDoc
         { confDocKeys =
-            ( "polite" :| [] , AnyOfSchema (NullSchema :| [ BoolSchema ]) ) :|
+            ( "polite" :| []
+            , [ [ Chunk
+                    { chunkText = "# "
+                    , chunkStyle =
+                        ChunkStyle
+                          { chunkStyleItalic = Nothing
+                          , chunkStyleStrikethrough = Nothing
+                          , chunkStyleSwapForegroundBackground = Nothing
+                          , chunkStyleConcealed = Nothing
+                          , chunkStyleOverlined = Nothing
+                          , chunkStyleConsoleIntensity = Nothing
+                          , chunkStyleUnderlining = Nothing
+                          , chunkStyleBlinking = Nothing
+                          , chunkStyleForeground = Nothing
+                          , chunkStyleBackground = Nothing
+                          , chunkStyleHyperlink = Nothing
+                          }
+                    }
+                , Chunk
+                    { chunkText = "or null"
+                    , chunkStyle =
+                        ChunkStyle
+                          { chunkStyleItalic = Nothing
+                          , chunkStyleStrikethrough = Nothing
+                          , chunkStyleSwapForegroundBackground = Nothing
+                          , chunkStyleConcealed = Nothing
+                          , chunkStyleOverlined = Nothing
+                          , chunkStyleConsoleIntensity = Nothing
+                          , chunkStyleUnderlining = Nothing
+                          , chunkStyleBlinking = Nothing
+                          , chunkStyleForeground = Just (Colour8 Dull Green)
+                          , chunkStyleBackground = Nothing
+                          , chunkStyleHyperlink = Nothing
+                          }
+                    }
+                ]
+              , [ Chunk
+                    { chunkText = "<boolean>"
+                    , chunkStyle =
+                        ChunkStyle
+                          { chunkStyleItalic = Nothing
+                          , chunkStyleStrikethrough = Nothing
+                          , chunkStyleSwapForegroundBackground = Nothing
+                          , chunkStyleConcealed = Nothing
+                          , chunkStyleOverlined = Nothing
+                          , chunkStyleConsoleIntensity = Nothing
+                          , chunkStyleUnderlining = Nothing
+                          , chunkStyleBlinking = Nothing
+                          , chunkStyleForeground = Just (Colour8 Dull Yellow)
+                          , chunkStyleBackground = Nothing
+                          , chunkStyleHyperlink = Nothing
+                          }
+                    }
+                ]
+              ]
+            ) :|
               []
         , confDocDefault = Just "False"
         , confDocExamples = []

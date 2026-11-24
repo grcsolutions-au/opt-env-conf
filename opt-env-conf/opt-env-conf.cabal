@@ -54,7 +54,6 @@ library
       aeson
     , autodocodec >=0.3.0.0
     , autodocodec-nix >=0.3.0.0
-    , autodocodec-schema
     , autodocodec-yaml
     , base <5
     , containers

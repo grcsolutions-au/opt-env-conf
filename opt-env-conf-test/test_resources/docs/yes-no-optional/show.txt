@@ -124,7 +124,8 @@ WithConfig
                                 BimapCodec
                                 _
                                 _
-                                (EitherCodec PossiblyJointUnion NullCodec (BoolCodec Nothing))
+                                (EitherCodec
+                                   PossiblyJointUnion (NullCodec Nothing) (BoolCodec Nothing))
                                 (Just _) :|
                                 []))
                           Nothing

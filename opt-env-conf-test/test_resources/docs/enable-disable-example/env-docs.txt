@@ -4,7 +4,62 @@ AnyDocsAnd
       [ AnyDocsSingle
           ConfDoc
             { confDocKeys =
-                ( "example" :| [] , AnyOfSchema (NullSchema :| [ BoolSchema ]) ) :|
+                ( "example" :| []
+                , [ [ Chunk
+                        { chunkText = "# "
+                        , chunkStyle =
+                            ChunkStyle
+                              { chunkStyleItalic = Nothing
+                              , chunkStyleStrikethrough = Nothing
+                              , chunkStyleSwapForegroundBackground = Nothing
+                              , chunkStyleConcealed = Nothing
+                              , chunkStyleOverlined = Nothing
+                              , chunkStyleConsoleIntensity = Nothing
+                              , chunkStyleUnderlining = Nothing
+                              , chunkStyleBlinking = Nothing
+                              , chunkStyleForeground = Nothing
+                              , chunkStyleBackground = Nothing
+                              , chunkStyleHyperlink = Nothing
+                              }
+                        }
+                    , Chunk
+                        { chunkText = "or null"
+                        , chunkStyle =
+                            ChunkStyle
+                              { chunkStyleItalic = Nothing
+                              , chunkStyleStrikethrough = Nothing
+                              , chunkStyleSwapForegroundBackground = Nothing
+                              , chunkStyleConcealed = Nothing
+                              , chunkStyleOverlined = Nothing
+                              , chunkStyleConsoleIntensity = Nothing
+                              , chunkStyleUnderlining = Nothing
+                              , chunkStyleBlinking = Nothing
+                              , chunkStyleForeground = Just (Colour8 Dull Green)
+                              , chunkStyleBackground = Nothing
+                              , chunkStyleHyperlink = Nothing
+                              }
+                        }
+                    ]
+                  , [ Chunk
+                        { chunkText = "<boolean>"
+                        , chunkStyle =
+                            ChunkStyle
+                              { chunkStyleItalic = Nothing
+                              , chunkStyleStrikethrough = Nothing
+                              , chunkStyleSwapForegroundBackground = Nothing
+                              , chunkStyleConcealed = Nothing
+                              , chunkStyleOverlined = Nothing
+                              , chunkStyleConsoleIntensity = Nothing
+                              , chunkStyleUnderlining = Nothing
+                              , chunkStyleBlinking = Nothing
+                              , chunkStyleForeground = Just (Colour8 Dull Yellow)
+                              , chunkStyleBackground = Nothing
+                              , chunkStyleHyperlink = Nothing
+                              }
+                        }
+                    ]
+                  ]
+                ) :|
                   []
             , confDocDefault = Nothing
             , confDocExamples = []

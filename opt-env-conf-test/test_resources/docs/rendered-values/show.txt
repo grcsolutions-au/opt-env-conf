@@ -60,39 +60,45 @@ WithConfig
                        _
                        (EitherCodec
                           PossiblyJointUnion
-                          NullCodec
-                          (ObjectOfCodec
-                             (Just "BigConfig")
-                             (ApCodec
-                                (BimapCodec
-                                   _
-                                   _
-                                   (RequiredKeyCodec
-                                      "map"
-                                      Nothing
-                                      (MapCodec
+                          (NullCodec Nothing)
+                          (ReferenceCodec
+                             "BigConfig"
+                             (ObjectOfCodec
+                                (Just "BigConfig")
+                                (ApCodec
+                                   (BimapCodec
+                                      _
+                                      _
+                                      (RequiredKeyCodec
+                                         "map"
+                                         mempty
                                          (MapCodec
-                                            (BimapCodec
-                                               _
-                                               _
-                                               (IntegerCodec
+                                            Nothing
+                                            (MapCodec
+                                               Nothing
+                                               (NumberCodec
                                                   Nothing
-                                                  Bounds
-                                                    { boundsLower = Just (-9223372036854775808)
-                                                    , boundsUpper = Just 9223372036854775807
-                                                    }))))))
-                                (BimapCodec
-                                   _
-                                   _
-                                   (OptionalKeyCodec
-                                      "sub"
-                                      Nothing
-                                      (StringCodec
-                                         Nothing
-                                         StringBounds
-                                           { stringBoundsMinLength = Nothing
-                                           , stringBoundsMaxLength = Nothing
-                                           }))))))
+                                                  (NumberTypeIsScientific
+                                                     (ScientificTypeIntegral
+                                                        IntegralTypeInt Nothing)
+                                                     Bounds
+                                                       { boundsLower = Nothing
+                                                       , boundsUpper = Nothing
+                                                       }))))))
+                                   (BimapCodec
+                                      _
+                                      _
+                                      (OptionalKeyCodec
+                                         "sub"
+                                         mempty
+                                         (StringCodec
+                                            Nothing
+                                            (StringTypePlain
+                                               PlainStringTypeText
+                                               Bounds
+                                                 { boundsLower = Nothing
+                                                 , boundsUpper = Nothing
+                                                 }))))))))
                        (Just _) :|
                        []))
                  (Just _)
@@ -120,21 +126,18 @@ WithConfig
                     _
                     (EitherCodec
                        PossiblyJointUnion
-                       NullCodec
+                       (NullCodec Nothing)
                        (BimapCodec
                           _
                           _
                           (ArrayOfCodec
                              Nothing
-                             (BimapCodec
-                                _
-                                _
-                                (IntegerCodec
-                                   Nothing
-                                   Bounds
-                                     { boundsLower = Just (-9223372036854775808)
-                                     , boundsUpper = Just 9223372036854775807
-                                     })))))
+                             Bounds { boundsLower = Nothing , boundsUpper = Nothing }
+                             (NumberCodec
+                                Nothing
+                                (NumberTypeIsScientific
+                                   (ScientificTypeIntegral IntegralTypeInt Nothing)
+                                   Bounds { boundsLower = Nothing , boundsUpper = Nothing })))))
                     (Just _) :|
                     []))
               (Just _)
@@ -162,16 +165,15 @@ WithConfig
                  _
                  (EitherCodec
                     PossiblyJointUnion
-                    NullCodec
+                    (NullCodec Nothing)
                     (BimapCodec
                        _
                        _
-                       (IntegerCodec
+                       (NumberCodec
                           Nothing
-                          Bounds
-                            { boundsLower = Just 0
-                            , boundsUpper = Just 18446744073709551615
-                            })))
+                          (NumberTypeIsScientific
+                             (ScientificTypeIntegral IntegralTypeWord Nothing)
+                             Bounds { boundsLower = Nothing , boundsUpper = Nothing }))))
                  Nothing :|
                  []))
            (Just _)

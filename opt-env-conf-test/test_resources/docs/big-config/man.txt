@@ -22,7 +22,8 @@ big-config [--config-file FILE_PATH]
   big configuration object
   config:
     big: # or null
-      # BigConfig
+      ref: BigConfig
+      def: BigConfig
       map: # required
         <key>: 
           <key>: 
@@ -42,7 +43,8 @@ big-config [--config-file FILE_PATH]
   big configuration object
   big:
     # or null
-    # BigConfig
+    ref: BigConfig
+    def: BigConfig
     map: # required
       <key>: 
         <key>: 

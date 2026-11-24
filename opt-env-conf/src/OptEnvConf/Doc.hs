@@ -43,7 +43,6 @@ module OptEnvConf.Doc
   )
 where
 
-import Autodocodec.Schema
 import Autodocodec.Yaml.Schema
 import Control.Monad
 import Data.List (intercalate, intersperse)
@@ -65,7 +64,8 @@ data SetDoc = SetDoc
     setDocTryOption :: !Bool,
     setDocDasheds :: ![Dashed],
     setDocEnvVars :: !(Maybe (NonEmpty String)),
-    setDocConfKeys :: !(Maybe (NonEmpty (NonEmpty String, JSONSchema))),
+    -- | The key of each config value, with the lines of its schema
+    setDocConfKeys :: !(Maybe (NonEmpty (NonEmpty String, [[Chunk]]))),
     setDocDefault :: !(Maybe String),
     setDocExamples :: ![String],
     setDocMetavar :: !(Maybe Metavar),
@@ -95,7 +95,8 @@ data EnvDoc = EnvDoc
   deriving (Show)
 
 data ConfDoc = ConfDoc
-  { confDocKeys :: !(NonEmpty (NonEmpty String, JSONSchema)),
+  { -- | The key of each config value, with the lines of its schema
+    confDocKeys :: !(NonEmpty (NonEmpty String, [[Chunk]])),
     confDocDefault :: !(Maybe String),
     confDocExamples :: ![String],
     confDocHelp :: !(Maybe String)
@@ -199,7 +200,7 @@ settingSetDoc Setting {..} = do
   let setDocConfKeys =
         NE.map
           ( \ConfigValSetting {..} ->
-              (configValSettingPath, jsonSchemaVia configValSettingCodec)
+              (configValSettingPath, schemaChunkLinesVia configValSettingCodec)
           )
           <$> settingConfigVals
   let setDocDefault = snd <$> settingDefaultValue
@@ -255,8 +256,8 @@ renderSetDocWithoutHeader SetDoc {..} =
       ],
       concat
         [ concatMap
-            ( \(key, schema) ->
-                case jsonSchemaChunkLines schema of
+            ( \(key, schemaLines) ->
+                case schemaLines of
                   [line] ->
                     [["config: ", confValChunk key, ": "] ++ line]
                   ls ->
@@ -818,8 +819,8 @@ renderConfDoc ConfDoc {..} =
       [defaultValueChunks d | d <- maybeToList confDocDefault],
       [exampleValuesChunks confDocExamples | not (null confDocExamples)],
       concatMap
-        ( \(key, schema) ->
-            case jsonSchemaChunkLines schema of
+        ( \(key, schemaLines) ->
+            case schemaLines of
               [line] ->
                 [[confValChunk key, ": "] ++ line]
               ls ->

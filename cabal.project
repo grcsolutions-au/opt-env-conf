@@ -1,0 +1,18 @@
+-- Temporary, for building against ../autodocodec.  Not to be committed.
+packages:
+  opt-env-conf/opt-env-conf.cabal
+  opt-env-conf-test/opt-env-conf-test.cabal
+  ../autodocodec/autodocodec/autodocodec.cabal
+  ../autodocodec/autodocodec-schema/autodocodec-schema.cabal
+  ../autodocodec/autodocodec-yaml/autodocodec-yaml.cabal
+  ../autodocodec/autodocodec-nix/autodocodec-nix.cabal
+  ../path/path/path.cabal
+  ../path-io/path-io.cabal
+test-show-details: direct
+
+-- sydtest's master, which builds against opt-env-conf 0.17's confWith'.
+source-repository-package
+  type: git
+  location: https://github.com/NorfairKing/sydtest
+  tag: f8b054ac5503d55ddcd4bab98998ac1d40086f0c
+  subdir: sydtest

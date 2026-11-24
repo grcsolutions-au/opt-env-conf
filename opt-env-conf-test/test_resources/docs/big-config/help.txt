@@ -16,7 +16,8 @@ example with a big configuration
   [34mbig configuration object[m
   config:
     [37mbig[m: # [32mor null[m
-      # BigConfig
+      [36mref: BigConfig[m
+      [36mdef: BigConfig[m
       [37mmap[m: # [31mrequired[m
         [37m<key>[m: 
           [37m<key>[m: 

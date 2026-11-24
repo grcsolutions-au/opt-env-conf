@@ -62,16 +62,12 @@ WithConfig
                            _
                            (EitherCodec
                               PossiblyJointUnion
-                              NullCodec
-                              (BimapCodec
-                                 _
-                                 _
-                                 (IntegerCodec
-                                    Nothing
-                                    Bounds
-                                      { boundsLower = Just (-9223372036854775808)
-                                      , boundsUpper = Just 9223372036854775807
-                                      })))
+                              (NullCodec Nothing)
+                              (NumberCodec
+                                 Nothing
+                                 (NumberTypeIsScientific
+                                    (ScientificTypeIntegral IntegralTypeInt Nothing)
+                                    Bounds { boundsLower = Nothing , boundsUpper = Nothing })))
                            (Just _) :|
                            []))
                      Nothing
@@ -180,7 +176,9 @@ WithConfig
                                        _
                                        _
                                        (EitherCodec
-                                          PossiblyJointUnion NullCodec (BoolCodec Nothing))
+                                          PossiblyJointUnion
+                                          (NullCodec Nothing)
+                                          (BoolCodec Nothing))
                                        (Just _) :|
                                        []))
                                  Nothing

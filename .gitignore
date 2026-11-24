@@ -3,3 +3,4 @@ stack.yaml.lock
 .direnv
 .pre-commit-config.yaml
 result
+/dist-newstyle

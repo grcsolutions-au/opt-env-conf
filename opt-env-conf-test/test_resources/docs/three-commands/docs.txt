@@ -37,14 +37,94 @@ AnyDocsAnd
                          , setDocConfKeys =
                              Just
                                (( "number" :| []
-                                , AnyOfSchema
-                                    (NullSchema :|
-                                       [ IntegerSchema
-                                           Bounds
-                                             { boundsLower = Just (-9223372036854775808)
-                                             , boundsUpper = Just 9223372036854775807
-                                             }
-                                       ])
+                                , [ [ Chunk
+                                        { chunkText = "# "
+                                        , chunkStyle =
+                                            ChunkStyle
+                                              { chunkStyleItalic = Nothing
+                                              , chunkStyleStrikethrough = Nothing
+                                              , chunkStyleSwapForegroundBackground = Nothing
+                                              , chunkStyleConcealed = Nothing
+                                              , chunkStyleOverlined = Nothing
+                                              , chunkStyleConsoleIntensity = Nothing
+                                              , chunkStyleUnderlining = Nothing
+                                              , chunkStyleBlinking = Nothing
+                                              , chunkStyleForeground = Nothing
+                                              , chunkStyleBackground = Nothing
+                                              , chunkStyleHyperlink = Nothing
+                                              }
+                                        }
+                                    , Chunk
+                                        { chunkText = "or null"
+                                        , chunkStyle =
+                                            ChunkStyle
+                                              { chunkStyleItalic = Nothing
+                                              , chunkStyleStrikethrough = Nothing
+                                              , chunkStyleSwapForegroundBackground = Nothing
+                                              , chunkStyleConcealed = Nothing
+                                              , chunkStyleOverlined = Nothing
+                                              , chunkStyleConsoleIntensity = Nothing
+                                              , chunkStyleUnderlining = Nothing
+                                              , chunkStyleBlinking = Nothing
+                                              , chunkStyleForeground = Just (Colour8 Dull Green)
+                                              , chunkStyleBackground = Nothing
+                                              , chunkStyleHyperlink = Nothing
+                                              }
+                                        }
+                                    ]
+                                  , [ Chunk
+                                        { chunkText = "<integer>"
+                                        , chunkStyle =
+                                            ChunkStyle
+                                              { chunkStyleItalic = Nothing
+                                              , chunkStyleStrikethrough = Nothing
+                                              , chunkStyleSwapForegroundBackground = Nothing
+                                              , chunkStyleConcealed = Nothing
+                                              , chunkStyleOverlined = Nothing
+                                              , chunkStyleConsoleIntensity = Nothing
+                                              , chunkStyleUnderlining = Nothing
+                                              , chunkStyleBlinking = Nothing
+                                              , chunkStyleForeground = Just (Colour8 Dull Yellow)
+                                              , chunkStyleBackground = Nothing
+                                              , chunkStyleHyperlink = Nothing
+                                              }
+                                        }
+                                    , Chunk
+                                        { chunkText = " # "
+                                        , chunkStyle =
+                                            ChunkStyle
+                                              { chunkStyleItalic = Nothing
+                                              , chunkStyleStrikethrough = Nothing
+                                              , chunkStyleSwapForegroundBackground = Nothing
+                                              , chunkStyleConcealed = Nothing
+                                              , chunkStyleOverlined = Nothing
+                                              , chunkStyleConsoleIntensity = Nothing
+                                              , chunkStyleUnderlining = Nothing
+                                              , chunkStyleBlinking = Nothing
+                                              , chunkStyleForeground = Nothing
+                                              , chunkStyleBackground = Nothing
+                                              , chunkStyleHyperlink = Nothing
+                                              }
+                                        }
+                                    , Chunk
+                                        { chunkText = "64 bit signed integer"
+                                        , chunkStyle =
+                                            ChunkStyle
+                                              { chunkStyleItalic = Nothing
+                                              , chunkStyleStrikethrough = Nothing
+                                              , chunkStyleSwapForegroundBackground = Nothing
+                                              , chunkStyleConcealed = Nothing
+                                              , chunkStyleOverlined = Nothing
+                                              , chunkStyleConsoleIntensity = Nothing
+                                              , chunkStyleUnderlining = Nothing
+                                              , chunkStyleBlinking = Nothing
+                                              , chunkStyleForeground = Just (Colour8 Dull Green)
+                                              , chunkStyleBackground = Nothing
+                                              , chunkStyleHyperlink = Nothing
+                                              }
+                                        }
+                                    ]
+                                  ]
                                 ) :|
                                   [])
                          , setDocDefault = Nothing
@@ -94,7 +174,61 @@ AnyDocsAnd
                              , setDocConfKeys =
                                  Just
                                    (( "enable" :| []
-                                    , AnyOfSchema (NullSchema :| [ BoolSchema ])
+                                    , [ [ Chunk
+                                            { chunkText = "# "
+                                            , chunkStyle =
+                                                ChunkStyle
+                                                  { chunkStyleItalic = Nothing
+                                                  , chunkStyleStrikethrough = Nothing
+                                                  , chunkStyleSwapForegroundBackground = Nothing
+                                                  , chunkStyleConcealed = Nothing
+                                                  , chunkStyleOverlined = Nothing
+                                                  , chunkStyleConsoleIntensity = Nothing
+                                                  , chunkStyleUnderlining = Nothing
+                                                  , chunkStyleBlinking = Nothing
+                                                  , chunkStyleForeground = Nothing
+                                                  , chunkStyleBackground = Nothing
+                                                  , chunkStyleHyperlink = Nothing
+                                                  }
+                                            }
+                                        , Chunk
+                                            { chunkText = "or null"
+                                            , chunkStyle =
+                                                ChunkStyle
+                                                  { chunkStyleItalic = Nothing
+                                                  , chunkStyleStrikethrough = Nothing
+                                                  , chunkStyleSwapForegroundBackground = Nothing
+                                                  , chunkStyleConcealed = Nothing
+                                                  , chunkStyleOverlined = Nothing
+                                                  , chunkStyleConsoleIntensity = Nothing
+                                                  , chunkStyleUnderlining = Nothing
+                                                  , chunkStyleBlinking = Nothing
+                                                  , chunkStyleForeground = Just (Colour8 Dull Green)
+                                                  , chunkStyleBackground = Nothing
+                                                  , chunkStyleHyperlink = Nothing
+                                                  }
+                                            }
+                                        ]
+                                      , [ Chunk
+                                            { chunkText = "<boolean>"
+                                            , chunkStyle =
+                                                ChunkStyle
+                                                  { chunkStyleItalic = Nothing
+                                                  , chunkStyleStrikethrough = Nothing
+                                                  , chunkStyleSwapForegroundBackground = Nothing
+                                                  , chunkStyleConcealed = Nothing
+                                                  , chunkStyleOverlined = Nothing
+                                                  , chunkStyleConsoleIntensity = Nothing
+                                                  , chunkStyleUnderlining = Nothing
+                                                  , chunkStyleBlinking = Nothing
+                                                  , chunkStyleForeground =
+                                                      Just (Colour8 Dull Yellow)
+                                                  , chunkStyleBackground = Nothing
+                                                  , chunkStyleHyperlink = Nothing
+                                                  }
+                                            }
+                                        ]
+                                      ]
                                     ) :|
                                       [])
                              , setDocDefault = Nothing

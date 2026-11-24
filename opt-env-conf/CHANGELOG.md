@@ -19,6 +19,9 @@
   its codec can encode it, not only when it shows as JSON.
 * The Nix option of a setting with an `exampleValue` has that `example`.
 * Requires `autodocodec-nix >=0.3.0.0`.
+* The schema of a configuration value is rendered from its codec, with
+  `schemaChunkLinesVia`, so `autodocodec-schema` is no longer a dependency.
+  The schema in `SetDoc` and `ConfDoc` is now its lines of `Chunk`s.
 
 ## [0.16.0.0] - 2026-11-14
 

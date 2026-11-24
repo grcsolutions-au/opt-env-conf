@@ -29,16 +29,12 @@ WithConfig
                        _
                        (EitherCodec
                           PossiblyJointUnion
-                          NullCodec
-                          (BimapCodec
-                             _
-                             _
-                             (IntegerCodec
-                                Nothing
-                                Bounds
-                                  { boundsLower = Just (-9223372036854775808)
-                                  , boundsUpper = Just 9223372036854775807
-                                  })))
+                          (NullCodec Nothing)
+                          (NumberCodec
+                             Nothing
+                             (NumberTypeIsScientific
+                                (ScientificTypeIntegral IntegralTypeInt Nothing)
+                                Bounds { boundsLower = Nothing , boundsUpper = Nothing })))
                        (Just _) :|
                        []))
                  Nothing
@@ -76,16 +72,12 @@ WithConfig
                        _
                        (EitherCodec
                           PossiblyJointUnion
-                          NullCodec
-                          (BimapCodec
-                             _
-                             _
-                             (StringCodec
-                                Nothing
-                                StringBounds
-                                  { stringBoundsMinLength = Nothing
-                                  , stringBoundsMaxLength = Nothing
-                                  })))
+                          (NullCodec Nothing)
+                          (StringCodec
+                             Nothing
+                             (StringTypePlain
+                                PlainStringTypeString
+                                Bounds { boundsLower = Nothing , boundsUpper = Nothing })))
                        (Just _) :|
                        []))
                  Nothing
@@ -191,7 +183,8 @@ WithConfig
                                 BimapCodec
                                 _
                                 _
-                                (EitherCodec PossiblyJointUnion NullCodec (BoolCodec Nothing))
+                                (EitherCodec
+                                   PossiblyJointUnion (NullCodec Nothing) (BoolCodec Nothing))
                                 (Just _) :|
                                 []))
                           Nothing
